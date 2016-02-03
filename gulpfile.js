@@ -1,9 +1,9 @@
 var gulp = require('gulp');
 var browserify = require('browserify');
+var watchify = require('watchify');
 var reactify = require('reactify');
-var source = require("vinyl-source-stream");
-
-gulp.task('default', ['bundleClient']);
+var source = require('vinyl-source-stream');
+var concat = require('gulp-concat');
 
 gulp.task('bundleClient', ['move'], function() {
     var b = browserify();
@@ -20,7 +20,7 @@ gulp.task('bundleClient', ['move'], function() {
 });
 
 
-gulp.task('move', ['move-js', 'move-component', 'move-statics']);
+gulp.task('move', ['move-js', 'move-component', 'move-statics', 'css']);
 
 gulp.task('move-js', function() {
     var jsfiles = gulp.src('src/**/*.js');
@@ -39,8 +39,22 @@ gulp.task('move-component', function(cb) {
 });
 
 gulp.task('move-statics', function() {
-    var vendors = gulp
-        .src('src/client/static/**/*');
+    var vendors = gulp.src([
+        'src/client/static/**/*',
+        '!src/client/static/css/*.css',
+    ]);
 
     return vendors.pipe(gulp.dest('./bin/client/static'));
 });
+
+gulp.task('css', function() {
+    return gulp.src('src/client/static/**/*.css')
+        .pipe(concat('main.css'))
+        .pipe(gulp.dest('./bin/client/static/css'));
+})
+
+gulp.task('watch-css', function() {
+    gulp.watch('src/client/static/**/*.css', ['css']);
+});
+
+gulp.task('default', ['bundleClient', 'watch-css']);
