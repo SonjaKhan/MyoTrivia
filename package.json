@@ -15,8 +15,7 @@
     "reactify" : "latest",
     "react" : "latest",
     "react-dom": "latest",
-    "vinyl-source-stream" : "latest",
-    "watchify": "latest"
+    "vinyl-source-stream" : "latest"
   },
   "license": "N/A"
 }

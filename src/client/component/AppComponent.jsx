@@ -1,4 +1,5 @@
 var React = require('react');
+var QuestionComponent = require('./QuestionComponent.jsx');
 
 var AppComponent = React.createClass({
     getInitialState : function() {
@@ -9,9 +10,11 @@ var AppComponent = React.createClass({
         return (
             <div id="app">
                 Welcome to Myo Trivia
+                <QuestionComponent />
             </div>
+
         );
-	}
+    }
 });
 
 module.exports = AppComponent;

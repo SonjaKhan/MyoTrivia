@@ -1,6 +1,5 @@
 var gulp = require('gulp');
 var browserify = require('browserify');
-var watchify = require('watchify');
 var reactify = require('reactify');
 var source = require('vinyl-source-stream');
 var concat = require('gulp-concat');
@@ -18,7 +17,6 @@ gulp.task('bundleClient', ['move'], function() {
         .pipe(source('main.js'))
         .pipe(gulp.dest('./bin/client/static/js'));
 });
-
 
 gulp.task('move', ['move-js', 'move-component', 'move-statics', 'css']);
 
@@ -57,4 +55,8 @@ gulp.task('watch-css', function() {
     gulp.watch('src/client/static/**/*.css', ['css']);
 });
 
-gulp.task('default', ['bundleClient', 'watch-css']);
+gulp.task('watch-jsx', function() {
+    gulp.watch('src/client/component/*.jsx', ['default']);
+});
+
+gulp.task('default', ['bundleClient', 'watch-css', 'watch-jsx']);
