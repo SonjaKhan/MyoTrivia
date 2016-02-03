@@ -15,7 +15,8 @@
     "reactify" : "latest",
     "react" : "latest",
     "react-dom": "latest",
-    "vinyl-source-stream" : "latest"
+    "vinyl-source-stream" : "latest",
+    "myo" : "latest"
   },
   "license": "N/A"
 }
