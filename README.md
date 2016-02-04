@@ -3,7 +3,7 @@
 Description
 -----------
 
-A trivia game using the Myo armband for patients recovering from a stroke. Project for CSE 510.
+A trivia game using the Myo armband for patients recovering from a stroke. Project for UW CSE 510.
 
 Set Up
 ------
