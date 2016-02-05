@@ -1,5 +1,7 @@
 var React = require('react');
 var QuestionComponent = require('./QuestionComponent.jsx');
+var BrandingComponent = require('./BrandingComponent.jsx');
+var MenuComponent = require('./MenuComponent.jsx');
 
 var AppComponent = React.createClass({
     getInitialState : function() {
@@ -9,8 +11,8 @@ var AppComponent = React.createClass({
     render : function() {
         return (
             <div id="app">
-                Welcome to Myo Trivia
-                <QuestionComponent />
+                <BrandingComponent />
+                <MenuComponent />
             </div>
 
         );
