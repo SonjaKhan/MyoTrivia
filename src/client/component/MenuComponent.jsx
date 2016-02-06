@@ -7,7 +7,7 @@ var MenuComponent = React.createClass({
 
     render : function() {
         return (
-          <ul>
+          <ul id="main_menu">
             <li id="menu_start_game">
               <a href="#">
                 Play Game
