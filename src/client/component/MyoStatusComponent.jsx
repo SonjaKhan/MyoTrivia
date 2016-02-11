@@ -33,7 +33,6 @@ var MyoStatusComponent = React.createClass({
 	},
 
     render : function() {
-    	console.log(this.state);
         return (
             <div>
                 <div>{this.state.connected ? "connected" : "not connected"}</div>

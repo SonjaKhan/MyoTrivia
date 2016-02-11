@@ -12,6 +12,7 @@ var AppComponent = React.createClass({
     getInitialState : function() {
         return {
             myo: null,
+            page: Constants.PAGES.HOME,
         };
     },
 
@@ -37,13 +38,17 @@ var AppComponent = React.createClass({
         Myo.connect("com.sonjakhan.myoTrivia");
     },
 
-    render : function() {
-        var page = Constants.PAGES.HOME;
+    handleStartGame : function() {
+        this.setState({
+            page: Constants.PAGES.GAME_PLAY,
+        });
+    },
 
+    render : function() {
         var content;
-        switch(page) {
+        switch(this.state.page) {
           case Constants.PAGES.HOME:
-            content = <MenuComponent />;
+            content = <MenuComponent handleStartGame={this.handleStartGame} />;
             break;
           case Constants.PAGES.GAME_SETTINGS:
             content = <CategoryPicker />;

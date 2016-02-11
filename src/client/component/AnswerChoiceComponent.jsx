@@ -13,7 +13,7 @@ var AnswerChoiceComponent = React.createClass({
     },
     render : function() {
         return (
-            <div class="answerChoice">
+            <div className="answerChoice">
                 <div className="answer_text">
                     {this.props.answer}
                 </div>

@@ -5,30 +5,26 @@ var MenuComponent = React.createClass({
         return {};
     },
 
+    handleStartGame : function() {
+        this.props.handleStartGame();
+    },
+
     render : function() {
         return (
-          <ul id="main_menu">
-            <li id="menu_start_game">
-              <a href="#">
-                Play Game
-              </a>
-            </li>
-            <li id="menu_achievements">
-              <a href="#">
-                Achievements
-              </a>
-            </li>
-            <li id="menu_settings">
-              <a href="#">
-                Settings
-              </a>
-            </li>
-            <li id="menu_help">
-              <a href="#">
-                Help
-              </a>
-            </li>
-          </ul>
+            <ul id="main_menu">
+                <li id="menu_start_game" onClick={this.handleStartGame}>
+                    Play Game
+                </li>
+                <li id="menu_achievements">
+                    Achievements
+                </li>
+                <li id="menu_settings">
+                    Settings
+                </li>
+                <li id="menu_help">
+                    Help
+                </li>
+            </ul>
         );
     }
 });
