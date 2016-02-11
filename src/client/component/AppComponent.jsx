@@ -6,6 +6,7 @@ var QuestionComponent = require('./QuestionComponent.jsx');
 var BrandingComponent = require('./BrandingComponent.jsx');
 var MenuComponent = require('./MenuComponent.jsx');
 var CategoryPicker = require('./CategoryPicker.jsx');
+var CheckConnectionComponent = require('./CheckConnectionComponent.jsx');
 var MyoStatusComponent = require('./MyoStatusComponent.jsx');
 
 var AppComponent = React.createClass({
@@ -39,25 +40,34 @@ var AppComponent = React.createClass({
     },
 
     handleStartGame : function() {
-        this.setState({
-            page: Constants.PAGES.GAME_PLAY,
-        });
+        if (this.state.myo && this.state.myo.connected && this.state.myo.synced) {
+            this.setState({
+                page: Constants.PAGES.GAME_PLAY,
+            });
+        } else {
+            this.setState({
+                page: Constants.PAGES.CHECK_CONNECTION,
+            });
+        }
     },
 
     render : function() {
         var content;
         switch(this.state.page) {
-          case Constants.PAGES.HOME:
-            content = <MenuComponent handleStartGame={this.handleStartGame} />;
-            break;
-          case Constants.PAGES.GAME_SETTINGS:
-            content = <CategoryPicker />;
-            break;
-          case Constants.PAGES.GAME_PLAY:
-            content = <QuestionComponent />;
-            break;
-          default:
-            content = <div />;
+            case Constants.PAGES.HOME:
+                content = <MenuComponent handleStartGame={this.handleStartGame} />;
+                break;
+            case Constants.PAGES.GAME_SETTINGS:
+                content = <CategoryPicker />;
+                break;
+            case Constants.PAGES.GAME_PLAY:
+                content = <QuestionComponent />;
+                break;
+            case Constants.PAGES.CHECK_CONNECTION:
+                content = <CheckConnectionComponent />;
+                break;
+            default:
+                content = <div />;
         }
 
         return (
