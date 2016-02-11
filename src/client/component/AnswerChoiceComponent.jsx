@@ -7,7 +7,7 @@ var AnswerChoiceComponent = React.createClass({
 
     render : function() {
         return (
-            <div className="answerChoice">
+            <div class="answerChoice">
                 Answer Choice
             </div>
         );
