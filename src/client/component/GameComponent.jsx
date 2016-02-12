@@ -9,22 +9,29 @@ var GameComponent = React.createClass({
             progressMap: {}
         };
     },
+
     handleAnswer : function(isSuccess) {
-        progressMap[currentIndex] = isSuccess;
+        Myo.off('pose');
+        this.state.progressMap[this.state.currentIndex] = isSuccess;
         this.setState({
-            currentIndex: currentIndex + 1,
-            progressMap: progressMap
+            currentIndex: this.state.currentIndex + 1,
+            progressMap: this.state.progressMap
         });
     },
+
     render : function() {
-        return (
-            <div className="gameplay_page">
-                <QuestionComponent 
-                    question={this.state.questionList[this.state.currentIndex]}
-                    answerClbk={this.handleAnswer} 
-                />
-            </div>
-        );
+        if (this.state.currentIndex == this.state.questionList.length) {
+            return <div>GAME OVER</div>;
+        } else {
+            return (
+                <div className="gameplay_page">
+                    <QuestionComponent 
+                        question={this.state.questionList[this.state.currentIndex]}
+                        answerCallback={this.handleAnswer} 
+                    />
+                </div>
+            );
+        }
     }
 });
 

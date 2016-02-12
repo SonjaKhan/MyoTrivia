@@ -26,6 +26,7 @@ var AppComponent = React.createClass({
         
         Myo.on('connected', function() {
             console.log('connected', this);
+            Myo.setLockingPolicy('none');
             self.setState({
                 myo: this,
             });
@@ -39,7 +40,11 @@ var AppComponent = React.createClass({
         Myo.connect("com.sonjakhan.myoTrivia");
     },
 
-    handleStartGame : function() {
+    update : function() {
+        this.forceUpdate();
+    },
+
+    startGame : function() {
         if (this.state.myo && this.state.myo.connected && this.state.myo.synced) {
             this.setState({
                 page: Constants.PAGES.GAME_PLAY,
@@ -56,17 +61,28 @@ var AppComponent = React.createClass({
             {
                 questionText: "What color is the sky?",
                 answers: [
-                            {text: "Green"}, 
-                            {text: "Blue"}, 
-                            {text: "Purple"}, 
-                            {text: "Orange"}
-                        ]
-            }
+                            { text: "Green", gesture: "fist" }, 
+                            { text: "Blue", gesture: "fingers_spread" }, 
+                            { text: "Purple", gesture: "wave_in" }, 
+                            { text: "Orange", gesture: "wave_out" },
+                        ],
+                correctIndex: 1
+            },
+            {
+                questionText: "What color is the ocean?",
+                answers: [
+                            { text: "Green", gesture: "fist" }, 
+                            { text: "Blue", gesture: "fingers_spread" }, 
+                            { text: "Purple", gesture: "wave_in" }, 
+                            { text: "Orange", gesture: "wave_out" },
+                        ],
+                correctIndex: 1
+            },
         ];
         var content;
         switch(this.state.page) {
             case Constants.PAGES.HOME:
-                content = <MenuComponent handleStartGame={this.handleStartGame} />;
+                content = <MenuComponent handleStartGame={this.startGame} />;
                 break;
             case Constants.PAGES.GAME_SETTINGS:
                 content = <CategoryPicker />;
@@ -75,7 +91,7 @@ var AppComponent = React.createClass({
                 content = <GameComponent questions={questionData}/>;
                 break;
             case Constants.PAGES.CHECK_CONNECTION:
-                content = <CheckConnectionComponent />;
+                content = <CheckConnectionComponent startGame={this.startGame} />;
                 break;
             default:
                 content = <div />;

@@ -1,11 +1,30 @@
 var React = require('react');
+var Myo = require('myo');
 
 var AnswerChoiceComponent = require('./AnswerChoiceComponent.jsx');
 
 var QuestionComponent = React.createClass({
-    getInitialState : function() {
-        return {};
+
+    componentWillMount: function() {
+        console.log("component will mount questions")
+        var self = this;
+        Myo.on("pose", function(pose_name) {
+            console.log(pose_name);
+            isCorrect = pose_name == self.props.question.answers[self.props.question.correctIndex].gesture;
+            self.props.answerCallback(isCorrect);
+        });
     },
+
+    componentWillUpdate: function() {
+        console.log("component will update questions")
+        var self = this;
+        Myo.on("pose", function(pose_name) {
+            console.log(pose_name);
+            isCorrect = pose_name == self.props.question.answers[self.props.question.correctIndex].gesture;
+            self.props.answerCallback(isCorrect);
+        });
+    },
+
     render : function() {
         return (
             <div className="question_page">
