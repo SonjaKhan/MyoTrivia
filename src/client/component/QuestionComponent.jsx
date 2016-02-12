@@ -10,21 +10,21 @@ var QuestionComponent = React.createClass({
         return (
             <div className="question_page">
                 <div className="question">
-                    What is the color of the sky?
+                    {this.props.question.questionText}
                 </div>
 
                 <ul id="answer_choices">
                     <li id="answer_choice_A">
-                        <AnswerChoiceComponent answer="Green"/>
+                        <AnswerChoiceComponent answer={this.props.question.answers[0].text}/>
                     </li>
                     <li id="answer_choice_B">
-                         <AnswerChoiceComponent answer="Blue"/>
+                         <AnswerChoiceComponent answer={this.props.question.answers[1].text}/>
                     </li>
                     <li id="answer_choice_C">
-                        <AnswerChoiceComponent answer="Purple" />
+                        <AnswerChoiceComponent answer={this.props.question.answers[2].text} />
                     </li>
                     <li id="answer_choice_D">
-                        <AnswerChoiceComponent answer="Orange" />
+                        <AnswerChoiceComponent answer={this.props.question.answers[3].text} />
                     </li>
                 </ul>
             </div>

@@ -2,7 +2,7 @@ var React = require('react');
 var Myo = require('myo');
 
 var Constants = require('../Constants');
-var QuestionComponent = require('./QuestionComponent.jsx');
+var GameComponent = require('./GameComponent.jsx');
 var BrandingComponent = require('./BrandingComponent.jsx');
 var MenuComponent = require('./MenuComponent.jsx');
 var CategoryPicker = require('./CategoryPicker.jsx');
@@ -52,6 +52,17 @@ var AppComponent = React.createClass({
     },
 
     render : function() {
+        var questionData = [
+            {
+                questionText: "What color is the sky?",
+                answers: [
+                            {text: "Green"}, 
+                            {text: "Blue"}, 
+                            {text: "Purple"}, 
+                            {text: "Orange"}
+                        ]
+            }
+        ];
         var content;
         switch(this.state.page) {
             case Constants.PAGES.HOME:
@@ -61,7 +72,7 @@ var AppComponent = React.createClass({
                 content = <CategoryPicker />;
                 break;
             case Constants.PAGES.GAME_PLAY:
-                content = <QuestionComponent />;
+                content = <GameComponent questions={questionData}/>;
                 break;
             case Constants.PAGES.CHECK_CONNECTION:
                 content = <CheckConnectionComponent />;

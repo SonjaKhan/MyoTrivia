@@ -18,7 +18,7 @@ var AnswerChoiceComponent = React.createClass({
                     {this.props.answer}
                 </div>
                 <div className="gesture_answer" onClick={this.toggleGif}>
-                    <img src="gesture_gifs/open_hand.gif" alt="open hand" height="125" width="280"/>
+                    <img src="assets/gesture_icons/png/solid_grey_RH_spread_fingers@2x.png" alt="open hand" height="100" width="100"/>
                 </div>
             </div>
         );
