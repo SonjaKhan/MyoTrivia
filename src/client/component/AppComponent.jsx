@@ -8,6 +8,7 @@ var MenuComponent = require('./MenuComponent.jsx');
 var CategoryPicker = require('./CategoryPicker.jsx');
 var CheckConnectionComponent = require('./CheckConnectionComponent.jsx');
 var MyoStatusComponent = require('./MyoStatusComponent.jsx');
+var GameSummary = require('./GameSummary.jsx');
 
 var AppComponent = React.createClass({
     getInitialState : function() {
@@ -19,11 +20,11 @@ var AppComponent = React.createClass({
 
     componentWillMount : function() {
         var self = this;
-        
+
         Myo.onError = function() {
             console.log("Myo Connect is not running");
         };
-        
+
         Myo.on('connected', function() {
             console.log('connected', this);
             Myo.setLockingPolicy('none');
@@ -79,6 +80,8 @@ var AppComponent = React.createClass({
                 correctIndex: 1
             },
         ];
+
+        this.state.page = Constants.PAGES.GAME_SUMMARY;
         var content;
         switch(this.state.page) {
             case Constants.PAGES.HOME:
@@ -92,6 +95,9 @@ var AppComponent = React.createClass({
                 break;
             case Constants.PAGES.CHECK_CONNECTION:
                 content = <CheckConnectionComponent startGame={this.startGame} />;
+                break;
+            case Constants.PAGES.GAME_SUMMARY:
+                content = <GameSummary />;
                 break;
             default:
                 content = <div />;

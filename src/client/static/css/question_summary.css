@@ -1,0 +1,39 @@
+#question_summary_results {
+  text-align: center;
+  margin: 20px auto;
+}
+
+#question_summary_list {
+  text-align: center;
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+#question_summary_list li {
+  display: inline-block;
+  width: 20px;
+  height: 40px;
+  margin: 0px 1px;
+  padding: 0px;
+}
+
+.question_summary_label, .question_summary_result {
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  vertical-align: middle;
+}
+
+.question_summary_label {
+  background: #D0D0D0;
+}
+
+.question_summary_result {
+  background: #E0E0E0;
+}
+
+#question_summary_review {
+  text-align: center;
+  margin-top: 20px;
+}
