@@ -1,4 +1,6 @@
 var React = require('react');
+var MenuItem = require('./MenuItem.jsx');
+
 
 var MenuComponent = React.createClass({
     getInitialState : function() {
@@ -12,18 +14,10 @@ var MenuComponent = React.createClass({
     render : function() {
         return (
             <ul id="main_menu">
-                <li id="menu_start_game" onClick={this.handleStartGame}>
-                    Play Game
-                </li>
-                <li id="menu_achievements">
-                    Achievements
-                </li>
-                <li id="menu_settings">
-                    Settings
-                </li>
-                <li id="menu_help">
-                    Help
-                </li>
+                <MenuItem text="Play Game" item_id="start_game" onclick={this.handleStartGame} />
+                <MenuItem text="Achievements" item_id="achievements" />
+                <MenuItem text="Settings" item_id="settings" />
+                <MenuItem text="Help" item_id="help" />
             </ul>
         );
     }
