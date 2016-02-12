@@ -34,7 +34,7 @@ var MyoStatusComponent = React.createClass({
 
     render : function() {
         return (
-            <div>
+            <div className="myoStatus">
                 <div>{this.state.connected ? "connected" : "not connected"}</div>
                 <div>{this.state.synced ? "synced" : "not synced"}</div>
             </div>

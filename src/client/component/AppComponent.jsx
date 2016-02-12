@@ -3,12 +3,11 @@ var Myo = require('myo');
 
 var Constants = require('../Constants');
 var GameComponent = require('./GameComponent.jsx');
-var BrandingComponent = require('./BrandingComponent.jsx');
 var MenuComponent = require('./MenuComponent.jsx');
 var CategoryPicker = require('./CategoryPicker.jsx');
 var CheckConnectionComponent = require('./CheckConnectionComponent.jsx');
-var MyoStatusComponent = require('./MyoStatusComponent.jsx');
 var GameSummary = require('./GameSummary.jsx');
+var HeaderComponent = require('./HeaderComponent.jsx');
 
 var AppComponent = React.createClass({
     getInitialState : function() {
@@ -56,7 +55,11 @@ var AppComponent = React.createClass({
             });
         }
     },
-
+    handleNavigateMenu : function() {
+        this.setState({
+            page: Constants.PAGES.HOME
+        });
+    },
     render : function() {
         var questionData = [
             {
@@ -104,8 +107,7 @@ var AppComponent = React.createClass({
 
         return (
             <div id="app">
-                <MyoStatusComponent myo={this.state.myo} />
-                <BrandingComponent />
+                <HeaderComponent myo={this.state.myo} navigateHome={this.handleNavigateMenu} />
                 { content }
             </div>
 

@@ -14,11 +14,13 @@ body {
   background: #F2F2F2;
 }
 
-#game_title {
+.game_title {
   margin: 0px;
   padding: 0px;
   font-size: 36px;
+  font-weight: bold;
   text-align: center;
+  width: 100%;
 }
 
 #main_menu {
@@ -67,4 +69,28 @@ body {
 #menu_help {
   bottom: -2px;
   right: -2px;
+}
+
+.myoStatus, .navigation {
+  display: inline-block;
+}
+
+.myoStatus {
+  width: 130px;
+}
+
+.navigation {
+  float: right;
+}
+
+.navigation div {
+  display: inline-block;
+  margin-left: 25px;
+  height: 20px;
+  border: 5px solid black;
+  border-radius: 5px;
+  padding: 1px;
+  color: #834C24;
+  background-color: #FFF8DC;
+  font-weight: bold; 
 }
