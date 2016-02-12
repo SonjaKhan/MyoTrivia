@@ -9,6 +9,6 @@ var Constants = {
     ACHIEVEMENTS : 6,
     HELP : 7
   }
-}
+};
 
 module.exports = Constants;
