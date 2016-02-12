@@ -99,7 +99,7 @@ var AppComponent = React.createClass({
 
         return (
             <div id="app">
-                <MyoStatusComponent myo={this.state.myo} />
+                <MyoStatusComponent />
                 <BrandingComponent />
                 { content }
             </div>

@@ -5,7 +5,7 @@ var MyoStatusComponent = React.createClass({
 
 	getInitialState : function() {
 		return {
-			connected: this.props.myo ? this.props.myo.connected : false,
+			connected: Myo.connected,
 			synced: Myo.synced,
 		}
 	},
@@ -13,7 +13,6 @@ var MyoStatusComponent = React.createClass({
 	componentWillMount : function() {
 		var self = this;
 		Myo.on('arm_synced', function() {
-			console.log("arm synced");
 			self.setState({
 				synced: true,
 			});
@@ -24,11 +23,17 @@ var MyoStatusComponent = React.createClass({
 				synced: false,
 			});
 		});
-	},
 
-	componentWillReceiveProps(nextProps) {
-		this.setState({
-			connected: nextProps.myo ? nextProps.myo.connected : false,
+		Myo.on('connected', function() {
+			self.setState({
+				connected: true,
+			});
+		});
+
+		Myo.on('disconnected', function() {
+			self.setState({
+				connected: false,
+			});
 		});
 	},
 
