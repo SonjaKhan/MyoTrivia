@@ -81,7 +81,6 @@ var AppComponent = React.createClass({
             },
         ];
 
-        this.state.page = Constants.PAGES.GAME_SUMMARY;
         var content;
         switch(this.state.page) {
             case Constants.PAGES.HOME:
