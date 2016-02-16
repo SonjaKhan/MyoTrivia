@@ -6,16 +6,17 @@ var PageManager = {
     return this.page;
   },
   subscribe : function(cb) {
-    subscribers.push(cb);
+    this.subscribers.push(cb);
   },
   notifySubscribers : function() {
-    for(var i=0;i<subscribers.length;i++) {
-      cb(getCurrentPage());
+    for(var i=0;i<this.subscribers.length;i++) {
+      cb = this.subscribers[i]
+      cb(this.getCurrentPage());
     }
   },
   changePage : function(new_page) {
-    page = new_page;
-    notifySubscribers();
+    this.page = new_page;
+    this.notifySubscribers();
   }
 };
 

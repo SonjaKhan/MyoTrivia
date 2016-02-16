@@ -9,6 +9,8 @@ var CheckConnectionComponent = require('./CheckConnectionComponent.jsx');
 var GameSummary = require('./GameSummary.jsx');
 var HeaderComponent = require('./HeaderComponent.jsx');
 
+var PageManager = require('../PageManager')
+
 var AppComponent = React.createClass({
     getInitialState : function() {
         return {
@@ -55,9 +57,9 @@ var AppComponent = React.createClass({
             });
         }
     },
-    handleNavigateMenu : function() {
+    updatePage: function(new_page) {
         this.setState({
-            page: Constants.PAGES.HOME
+            page: new_page
         });
     },
     render : function() {
@@ -84,6 +86,9 @@ var AppComponent = React.createClass({
             },
         ];
 
+        // page manager subscribe callback
+        PageManager.subscribe(this.updatePage)
+
         var content;
         switch(this.state.page) {
             case Constants.PAGES.HOME:
@@ -105,9 +110,11 @@ var AppComponent = React.createClass({
                 content = <div />;
         }
 
+        var nav = [Constants.PAGES.HOME, Constants.PAGES.GAME_SETTINGS];
+
         return (
             <div id="app">
-                <HeaderComponent myo={this.state.myo} navigateHome={this.handleNavigateMenu} />
+                <HeaderComponent myo={this.state.myo} navigations={nav} />
                 { content }
             </div>
 

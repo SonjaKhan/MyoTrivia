@@ -12,8 +12,8 @@ var HeaderComponent = React.createClass({
     render : function() {
         return (
             <div className="header">
-                <MyoStatusComponent myo={this.props.myo} />
-                <NavigationComponent navigateHome={this.props.navigateHome} />
+                <MyoStatusComponent myo={this.props.myo}  />
+                <NavigationComponent navigations={this.props.navigations} />
                 <BrandingComponent />
             </div>
 

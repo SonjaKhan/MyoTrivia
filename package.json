@@ -12,6 +12,7 @@
     "gulp-concat" : "latest",
     "browserify" : "latest",
     "browserify-css" : "latest",
+    "jquery" : "latest",
     "reactify" : "latest",
     "react" : "latest",
     "react-dom": "latest",

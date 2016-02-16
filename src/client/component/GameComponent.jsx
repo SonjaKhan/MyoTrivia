@@ -1,5 +1,6 @@
 var React = require('react');
 var QuestionComponent = require('./QuestionComponent.jsx');
+var HeaderComponent = require('./HeaderComponent.jsx');
 
 var GameComponent = React.createClass({
     getInitialState : function() {
