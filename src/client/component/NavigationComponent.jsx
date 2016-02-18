@@ -1,5 +1,6 @@
 var React = require('react');
 var Constants = require('../Constants');
+var navRoutes = require('../NavigationRoutes');
 var PageManager = require('../PageManager');
 var NavigatorComponent = require('./NavigatorComponent.jsx');
 
@@ -9,21 +10,24 @@ var NavigationComponent = React.createClass({
 		return {}
 	},
 
-    navigate: function(e) {
-        PageManager.changePage(Number(e.target.className))
-    },
-
     render : function() {
-        var navigators = [];
-        for(var i = 0; i < this.props.navigations.length; i++) {
-            navigators.push(<NavigatorComponent key={i} page={this.props.navigations[i]} />);
-        }
-        return (
-            <div className="navigation">
-                {navigators}
-            </div>
+        var currentPage = PageManager.getCurrentPage();
+        var navigationRoutes = navRoutes[currentPage];
 
-        );
+        if (navigationRoutes) {
+            var navigators = [];
+            for(var i = 0; i < navigationRoutes.length; i++) {
+                navigators.push(<NavigatorComponent key={i} page={navigationRoutes[i][0]} pageLabel={navigationRoutes[i][1]} />);
+            }
+            return (
+                <div className="navigation">
+                    {navigators}
+                </div>
+
+            );
+        } else {
+            return (<div></div>);
+        }
     }
 });
 

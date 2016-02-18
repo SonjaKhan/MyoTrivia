@@ -6,7 +6,7 @@ var MenuItem = React.createClass({
     },
     render : function() {
         return (
-            <li id={"menu_" + this.props.item_id} onClick={this.props.onclick}>
+            <li className={this.props.page_id} id={"menu_" + this.props.item_id} onClick={this.props.onclick}>
               {this.props.text}
             </li>
         );

@@ -13,7 +13,7 @@ var HeaderComponent = React.createClass({
         return (
             <div className="header">
                 <MyoStatusComponent myo={this.props.myo}  />
-                <NavigationComponent navigations={this.props.navigations} />
+                <NavigationComponent />
                 <BrandingComponent />
             </div>
 

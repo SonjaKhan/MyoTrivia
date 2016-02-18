@@ -8,13 +8,13 @@ var Navigator = React.createClass({
     },
 
     navigate: function(e) {
-        PageManager.changePage(Number(e.target.className))
+        PageManager.changePage(Number(e.target.className));
     },
 
     render : function() {
         return (
             <div className={this.props.page} onClick={this.navigate}>
-                Home
+                {this.props.pageLabel}
             </div>
         );
     }

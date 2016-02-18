@@ -15,7 +15,7 @@ var AppComponent = React.createClass({
     getInitialState : function() {
         return {
             myo: null,
-            page: Constants.PAGES.HOME,
+            page: Constants.PAGES.HOME
         };
     },
 
@@ -48,13 +48,9 @@ var AppComponent = React.createClass({
 
     startGame : function() {
         if (this.state.myo && this.state.myo.connected && this.state.myo.synced) {
-            this.setState({
-                page: Constants.PAGES.GAME_PLAY,
-            });
+            PageManager.changePage(Constants.PAGES.GAME_PLAY);
         } else {
-            this.setState({
-                page: Constants.PAGES.CHECK_CONNECTION,
-            });
+            PageManager.changePage(Constants.PAGES.MYO_CHECK);
         }
     },
     updatePage: function(new_page) {
@@ -100,7 +96,7 @@ var AppComponent = React.createClass({
             case Constants.PAGES.GAME_PLAY:
                 content = <GameComponent questions={questionData}/>;
                 break;
-            case Constants.PAGES.CHECK_CONNECTION:
+            case Constants.PAGES.MYO_CHECK:
                 content = <CheckConnectionComponent startGame={this.startGame} />;
                 break;
             case Constants.PAGES.GAME_SUMMARY:
