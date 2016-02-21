@@ -6,7 +6,6 @@ var AnswerChoiceComponent = require('./AnswerChoiceComponent.jsx');
 var QuestionComponent = React.createClass({
 
     componentWillMount: function() {
-        console.log("component will mount questions")
         var self = this;
         Myo.on("pose", function(pose_name) {
             console.log(pose_name);
@@ -16,7 +15,6 @@ var QuestionComponent = React.createClass({
     },
 
     componentWillUpdate: function() {
-        console.log("component will update questions")
         var self = this;
         Myo.on("pose", function(pose_name) {
             console.log(pose_name);

@@ -2,12 +2,16 @@ var React = require('react');
 var QuestionComponent = require('./QuestionComponent.jsx');
 var HeaderComponent = require('./HeaderComponent.jsx');
 
+var t;
+const STATUS_TIME = 2000;
+
 var GameComponent = React.createClass({
     getInitialState : function() {
         return {
             questionList: this.props.questions,
             currentIndex: 0,
-            progressMap: {}
+            progressMap: {},
+            showStatus: false,
         };
     },
 
@@ -15,13 +19,27 @@ var GameComponent = React.createClass({
         Myo.off('pose');
         this.state.progressMap[this.state.currentIndex] = isSuccess;
         this.setState({
-            currentIndex: this.state.currentIndex + 1,
-            progressMap: this.state.progressMap
+            showStatus: true,
         });
+        var self = this;
+        t = setTimeout(function() {
+            Myo.off('pose');
+            self.setState({
+                currentIndex: self.state.currentIndex + 1,
+                progressMap: self.state.progressMap,
+                showStatus: false,
+            }); 
+        }, STATUS_TIME);
     },
 
     render : function() {
-        if (this.state.currentIndex == this.state.questionList.length) {
+        if (this.state.showStatus) {
+            if (this.state.progressMap[this.state.currentIndex]) {
+                return <div>CORRECT!</div>;
+            } else {
+                return <div>WRONG!</div>;
+            }
+        } else if (this.state.currentIndex == this.state.questionList.length) {
             return <div>GAME OVER</div>;
         } else {
             return (
