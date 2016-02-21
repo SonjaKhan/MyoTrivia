@@ -1,6 +1,7 @@
 var React = require('react');
 var QuestionComponent = require('./QuestionComponent.jsx');
 var HeaderComponent = require('./HeaderComponent.jsx');
+var ResultsComponent = require('./ResultsComponent.jsx');
 
 var t;
 const STATUS_TIME = 2000;
@@ -40,7 +41,12 @@ var GameComponent = React.createClass({
                 return <div>WRONG!</div>;
             }
         } else if (this.state.currentIndex == this.state.questionList.length) {
-            return <div>GAME OVER</div>;
+            return (
+                <div>
+                    <div>GAME OVER</div>
+                    <ResultsComponent progressMap={this.state.progressMap} />
+                </div>
+            );
         } else {
             return (
                 <div className="gameplay_page">
