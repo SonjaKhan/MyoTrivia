@@ -9,6 +9,7 @@ var CategoryPicker = require('./CategoryPicker.jsx');
 var CheckConnectionComponent = require('./CheckConnectionComponent.jsx');
 var GameSummary = require('./GameSummary.jsx');
 var HeaderComponent = require('./HeaderComponent.jsx');
+var HelpInfo = require('./HelpInfo.jsx');
 
 var PageManager = require('../PageManager')
 
@@ -117,6 +118,9 @@ var AppComponent = React.createClass({
                 break;
             case Constants.PAGES.GAME_SUMMARY:
                 content = <GameSummary />;
+                break;
+            case Constants.PAGES.HELP:
+                content = <HelpInfo />
                 break;
             default:
                 content = <div />;
