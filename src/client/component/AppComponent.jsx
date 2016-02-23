@@ -1,5 +1,6 @@
 var React = require('react');
 var Myo = require('myo');
+var $ = require('jquery');
 
 var Constants = require('../Constants');
 var GameComponent = require('./GameComponent.jsx');
@@ -15,12 +16,23 @@ var AppComponent = React.createClass({
     getInitialState : function() {
         return {
             myo: null,
-            page: Constants.PAGES.HOME
+            page: Constants.PAGES.HOME,
+            data: null
         };
     },
 
     componentWillMount : function() {
         var self = this;
+
+        // load json
+        $.ajax({
+          url: 'data/data.json',
+          async: false,
+          dataType: 'json',
+          success: function (response) {
+            self.data = response;
+          }
+        });
 
         Myo.onError = function() {
             console.log("Myo Connect is not running");
@@ -59,6 +71,7 @@ var AppComponent = React.createClass({
         });
     },
     render : function() {
+
         var questionData = [
             {
                 questionText: "What color is the sky?",
