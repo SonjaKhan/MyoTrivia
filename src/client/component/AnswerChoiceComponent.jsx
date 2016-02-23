@@ -1,9 +1,18 @@
 var React = require('react');
 
+
+const poseImgMap = {
+    "fingers_spread": "solid_grey_RH_spread_fingers@2x.png",
+    "fist": "solid_grey_RH_fist@2x.png",
+    "wave_in": "solid_grey_RH_wave_right@2x.png",
+    "wave_out": "solid_grey_RH_wave_left@2x.png",
+}
 var AnswerChoiceComponent = React.createClass({
+
     getInitialState : function() {
         return {};
     },
+
     toggleGif: function(e) {
         if (e.target.className == "gesture_answer") {
             e.target.firstChild.style.visibility = "visible";
@@ -11,6 +20,7 @@ var AnswerChoiceComponent = React.createClass({
             e.target.style.visibility = "hidden";
         }
     },
+    
     render : function() {
         return (
             <div className="answerChoice">
@@ -18,7 +28,12 @@ var AnswerChoiceComponent = React.createClass({
                     {this.props.answer}
                 </div>
                 <div className="gesture_answer" onClick={this.toggleGif}>
-                    <img src="assets/gesture_icons/png/solid_grey_RH_spread_fingers@2x.png" alt="open hand" height="100" width="100"/>
+                    <img 
+                        src={"assets/gesture_icons/png/" + poseImgMap[this.props.gesture]}
+                        alt={this.props.gesture}
+                        height="100" 
+                        width="100"
+                    />
                 </div>
             </div>
         );

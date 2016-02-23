@@ -32,16 +32,16 @@ var QuestionComponent = React.createClass({
 
                 <ul id="answer_choices">
                     <li id="answer_choice_A">
-                        <AnswerChoiceComponent answer={this.props.question.answers[0].text}/>
+                        <AnswerChoiceComponent answer={this.props.question.answers[0].text} gesture={this.props.question.answers[0].gesture} />
                     </li>
                     <li id="answer_choice_B">
-                         <AnswerChoiceComponent answer={this.props.question.answers[1].text}/>
+                         <AnswerChoiceComponent answer={this.props.question.answers[1].text} gesture={this.props.question.answers[1].gesture} />
                     </li>
                     <li id="answer_choice_C">
-                        <AnswerChoiceComponent answer={this.props.question.answers[2].text} />
+                        <AnswerChoiceComponent answer={this.props.question.answers[2].text} gesture={this.props.question.answers[2].gesture} />
                     </li>
                     <li id="answer_choice_D">
-                        <AnswerChoiceComponent answer={this.props.question.answers[3].text} />
+                        <AnswerChoiceComponent answer={this.props.question.answers[3].text} gesture={this.props.question.answers[3].gesture} />
                     </li>
                 </ul>
             </div>
