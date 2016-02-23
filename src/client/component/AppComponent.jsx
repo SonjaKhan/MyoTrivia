@@ -72,28 +72,31 @@ var AppComponent = React.createClass({
     },
     render : function() {
 
-        var questionData = [
-            {
-                questionText: "What color is the sky?",
-                answers: [
-                            { text: "Green", gesture: "fist" }, 
-                            { text: "Blue", gesture: "fingers_spread" }, 
-                            { text: "Purple", gesture: "wave_in" }, 
-                            { text: "Orange", gesture: "wave_out" },
-                        ],
-                correctIndex: 1
-            },
-            {
-                questionText: "What color is the ocean?",
-                answers: [
-                            { text: "Green", gesture: "fist" }, 
-                            { text: "Blue", gesture: "fingers_spread" }, 
-                            { text: "Purple", gesture: "wave_in" }, 
-                            { text: "Orange", gesture: "wave_out" },
-                        ],
-                correctIndex: 1
-            },
-        ];
+        // Feel free to comment this out if it is causing issues
+        // but this should use the questions in the json data file in the static/data folder
+        var questionData = this.data["Sports"]["easy"];
+        // var questionData = [
+        //     {
+        //         questionText: "What color is the sky?",
+        //         answers: [
+        //                     { text: "Green", gesture: "fist" }, 
+        //                     { text: "Blue", gesture: "fingers_spread" }, 
+        //                     { text: "Purple", gesture: "wave_in" }, 
+        //                     { text: "Orange", gesture: "wave_out" },
+        //                 ],
+        //         correctIndex: 1
+        //     },
+        //     {
+        //         questionText: "What color is the ocean?",
+        //         answers: [
+        //                     { text: "Green", gesture: "fist" }, 
+        //                     { text: "Blue", gesture: "fingers_spread" }, 
+        //                     { text: "Purple", gesture: "wave_in" }, 
+        //                     { text: "Orange", gesture: "wave_out" },
+        //                 ],
+        //         correctIndex: 1
+        //     },
+        // ];
 
         // page manager subscribe callback
         PageManager.subscribe(this.updatePage)
