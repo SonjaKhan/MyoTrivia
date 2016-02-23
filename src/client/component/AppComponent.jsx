@@ -10,6 +10,7 @@ var CheckConnectionComponent = require('./CheckConnectionComponent.jsx');
 var GameSummary = require('./GameSummary.jsx');
 var HeaderComponent = require('./HeaderComponent.jsx');
 var HelpInfo = require('./HelpInfo.jsx');
+var AchievementsSummary = require('./AchievementsSummary.jsx');
 
 var PageManager = require('../PageManager')
 
@@ -120,7 +121,10 @@ var AppComponent = React.createClass({
                 content = <GameSummary />;
                 break;
             case Constants.PAGES.HELP:
-                content = <HelpInfo />
+                content = <HelpInfo />;
+                break;
+            case Constants.PAGES.ACHIEVEMENTS:
+                content = <AchievementsSummary />;
                 break;
             default:
                 content = <div />;
