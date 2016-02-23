@@ -4,8 +4,8 @@ var React = require('react');
 const poseImgMap = {
     "fingers_spread": "solid_grey_RH_spread_fingers@2x.png",
     "fist": "solid_grey_RH_fist@2x.png",
-    "wave_in": "solid_grey_RH_wave_right@2x.png",
-    "wave_out": "solid_grey_RH_wave_left@2x.png",
+    "wave_in": "solid_grey_RH_wave_left@2x.png",
+    "wave_out": "solid_grey_RH_wave_right@2x.png",
 }
 var AnswerChoiceComponent = React.createClass({
 
@@ -22,12 +22,18 @@ var AnswerChoiceComponent = React.createClass({
     },
     
     render : function() {
+        var gestureClass = "gesture_answer";
+        if (this.props.correct) {
+            gestureClass += " correct";
+        } else if (this.props.incorrect) {
+            gestureClass += " incorrect";
+        }
         return (
             <div className="answerChoice">
                 <div className="answer_text">
                     {this.props.answer}
                 </div>
-                <div className="gesture_answer" onClick={this.toggleGif}>
+                <div className={gestureClass} onClick={this.toggleGif}>
                     <img 
                         src={"assets/gesture_icons/png/" + poseImgMap[this.props.gesture]}
                         alt={this.props.gesture}

@@ -12,15 +12,19 @@ var GameComponent = React.createClass({
             questionList: this.props.questions,
             currentIndex: 0,
             progressMap: {},
-            showStatus: false,
+            value: null,
         };
     },
 
-    handleAnswer : function(isSuccess) {
+    handleAnswer : function(userIndex) {
         Myo.off('pose');
+        correctIndex = this.state.questionList[this.state.currentIndex].correctIndex;
+        console.log("correct index", correctIndex);
+        console.log("user index", userIndex);
+        isSuccess = correctIndex == userIndex;
         this.state.progressMap[this.state.currentIndex] = isSuccess;
         this.setState({
-            showStatus: true,
+            value: userIndex,
         });
         var self = this;
         t = setTimeout(function() {
@@ -28,19 +32,13 @@ var GameComponent = React.createClass({
             self.setState({
                 currentIndex: self.state.currentIndex + 1,
                 progressMap: self.state.progressMap,
-                showStatus: false,
-            }); 
+                value: null,
+            });
         }, STATUS_TIME);
     },
 
     render : function() {
-        if (this.state.showStatus) {
-            if (this.state.progressMap[this.state.currentIndex]) {
-                return <div>CORRECT!</div>;
-            } else {
-                return <div>WRONG!</div>;
-            }
-        } else if (this.state.currentIndex == this.state.questionList.length) {
+        if (this.state.currentIndex == this.state.questionList.length) {
             return (
                 <div>
                     <div>GAME OVER</div>
@@ -52,7 +50,8 @@ var GameComponent = React.createClass({
                 <div className="gameplay_page">
                     <QuestionComponent 
                         question={this.state.questionList[this.state.currentIndex]}
-                        answerCallback={this.handleAnswer} 
+                        answerCallback={this.handleAnswer}
+                        value={this.state.value}
                     />
                 </div>
             );

@@ -74,3 +74,11 @@
 .gesture_answer img {
   padding: 5px;
 }
+
+.correct {
+  background-color: green;
+}
+
+.incorrect {
+  background-color: red;
+}

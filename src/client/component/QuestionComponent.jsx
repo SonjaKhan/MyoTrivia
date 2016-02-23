@@ -3,50 +3,73 @@ var Myo = require('myo');
 
 var AnswerChoiceComponent = require('./AnswerChoiceComponent.jsx');
 
+const abcd = "ABCD";
+
 var QuestionComponent = React.createClass({
 
     componentWillMount: function() {
         var self = this;
         Myo.on("pose", function(pose_name) {
-            console.log(pose_name);
-            isCorrect = pose_name == self.props.question.answers[self.props.question.correctIndex].gesture;
-            self.props.answerCallback(isCorrect);
+            var userIndex = 0;
+            for (var i = 0; i < self.props.question.answers.length; i++) {
+                if (pose_name == self.props.question.answers[i].gesture) {
+                    userIndex = i;
+                    break;
+                }
+            }
+            self.props.answerCallback(userIndex);
         });
     },
 
     componentWillUpdate: function() {
         var self = this;
         Myo.on("pose", function(pose_name) {
-            console.log(pose_name);
-            isCorrect = pose_name == self.props.question.answers[self.props.question.correctIndex].gesture;
-            self.props.answerCallback(isCorrect);
+            var userIndex = 0;
+            for (var i = 0; i < self.props.question.answers.length; i++) {
+                if (pose_name == self.props.question.answers[i].gesture) {
+                    userIndex = i;
+                    break;
+                }
+            }
+            self.props.answerCallback(userIndex);
         });
     },
 
-    render : function() {
-        return (
-            <div className="question_page">
-                <div className="question">
-                    {this.props.question.questionText}
-                </div>
+    getAnswers : function() {
+        answers = []
+        console.log("value", this.props.value);
+        for (var i = 0; i < this.props.question.answers.length; i++) {
+            answers.push(
+                <li id={"answer_choice_" + abcd[i]} key={i}>
+                    <AnswerChoiceComponent 
+                        answer={this.props.question.answers[i].text} 
+                        gesture={this.props.question.answers[i].gesture} 
+                        correct={this.props.value == i && this.props.question.correctIndex == i}
+                        incorrect={this.props.value == i && this.props.question.correctIndex != i}
+                    />
+                </li>
+            );
+        }
+        return answers;
+    },
 
-                <ul id="answer_choices">
-                    <li id="answer_choice_A">
-                        <AnswerChoiceComponent answer={this.props.question.answers[0].text} gesture={this.props.question.answers[0].gesture} />
-                    </li>
-                    <li id="answer_choice_B">
-                         <AnswerChoiceComponent answer={this.props.question.answers[1].text} gesture={this.props.question.answers[1].gesture} />
-                    </li>
-                    <li id="answer_choice_C">
-                        <AnswerChoiceComponent answer={this.props.question.answers[2].text} gesture={this.props.question.answers[2].gesture} />
-                    </li>
-                    <li id="answer_choice_D">
-                        <AnswerChoiceComponent answer={this.props.question.answers[3].text} gesture={this.props.question.answers[3].gesture} />
-                    </li>
-                </ul>
-            </div>
-        );
-    }
+    render : function() {
+        // if (this.props.value != null) {
+        //     return <div>{this.props.question.correctIndex}</div>
+        // } else {
+            return (
+                <div className="question_page">
+                    <div className="question">
+                        {this.props.question.questionText}
+                    </div>
+
+                    <ul id="answer_choices">
+                        {this.getAnswers()}
+                    </ul>
+                </div>
+            );
+        }
+    // }
 });
 
 module.exports = QuestionComponent;
