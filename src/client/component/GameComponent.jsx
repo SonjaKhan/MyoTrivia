@@ -12,29 +12,55 @@ var GameComponent = React.createClass({
             questionList: this.props.questions,
             currentIndex: 0,
             progressMap: {},
-            value: null,
+            value: null,  // user's answer index to current question
         };
     },
 
+    componentWillMount: function() {
+        this.listenForPose(this.state.value);
+    },
+
+    componentWillUpdate: function(nextprops, nextstate) {
+        this.listenForPose(nextstate.value);
+    },
+
+    listenForPose : function(val) {
+        if (val != null || this.state.currentIndex == this.state.questionList.length) {
+            return;
+        }
+        var self = this;
+        Myo.on("pose", function(pose_name) {
+            console.log("pose", pose_name);
+            Myo.off('pose');
+            var userIndex = 0;
+            var question = self.state.questionList[self.state.currentIndex];
+            for (var i = 0; i < question.answers.length; i++) {
+                if (pose_name == question.answers[i].gesture) {
+                    userIndex = i;
+                    break;
+                }
+            }
+            self.handleAnswer(userIndex);
+        });
+    },
+
     handleAnswer : function(userIndex) {
-        Myo.off('pose');
         correctIndex = this.state.questionList[this.state.currentIndex].correctIndex;
+        isSuccess = correctIndex == userIndex;
         console.log("correct index", correctIndex);
         console.log("user index", userIndex);
-        isSuccess = correctIndex == userIndex;
-        this.state.progressMap[this.state.currentIndex] = isSuccess;
-        this.setState({
-            value: userIndex,
-        });
         var self = this;
         t = setTimeout(function() {
-            Myo.off('pose');
+            self.state.progressMap[self.state.currentIndex] = isSuccess;
             self.setState({
                 currentIndex: self.state.currentIndex + 1,
                 progressMap: self.state.progressMap,
                 value: null,
             });
         }, STATUS_TIME);
+        this.setState({
+            value: userIndex,
+        });
     },
 
     render : function() {
@@ -50,7 +76,6 @@ var GameComponent = React.createClass({
                 <div className="gameplay_page">
                     <QuestionComponent 
                         question={this.state.questionList[this.state.currentIndex]}
-                        answerCallback={this.handleAnswer}
                         value={this.state.value}
                     />
                 </div>
