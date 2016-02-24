@@ -4,7 +4,7 @@ var HeaderComponent = require('./HeaderComponent.jsx');
 var ResultsComponent = require('./ResultsComponent.jsx');
 
 var t;
-const STATUS_TIME = 2000;
+const STATUS_TIME = 3000;
 
 var GameComponent = React.createClass({
     getInitialState : function() {

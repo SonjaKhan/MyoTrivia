@@ -14,8 +14,9 @@ var QuestionComponent = React.createClass({
                 <li id={"answer_choice_" + abcd[i]} key={i}>
                     <AnswerChoiceComponent 
                         answer={this.props.question.answers[i].text} 
-                        gesture={this.props.question.answers[i].gesture} 
-                        correct={this.props.value == i && this.props.question.correctIndex == i}
+                        gesture={this.props.question.answers[i].gesture}
+                        ease={this.props.value != i && this.props.question.correctIndex == i}
+                        correct={this.props.value != null && this.props.question.correctIndex == i}
                         incorrect={this.props.value == i && this.props.question.correctIndex != i}
                     />
                 </li>

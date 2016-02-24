@@ -25,7 +25,6 @@
 #answer_choices li {
   display: inline-block;
   width: 280px;
-  height: 155px;
   padding: 0px;
   margin: 5px;
   position: absolute;
@@ -75,10 +74,14 @@
   padding: 5px;
 }
 
+.correct.ease {
+  transition: background-color 2s ease;
+}
+
 .correct {
-  background-color: green;
+  background-color: #b3e085;
 }
 
 .incorrect {
-  background-color: red;
+  background-color: #eaaeae;
 }
