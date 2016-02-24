@@ -10,8 +10,7 @@ var CategoryPicker = React.createClass({
 
     navigate: function(e) {
       GameManager.setCategory(e.target.className);
-      GameManager.setTriviaDifficulty("easy");
-      PageManager.changePage(Constants.PAGES.GAME_PLAY);
+      PageManager.changePage(Constants.PAGES.CHOOSE_TRIVIA_DIFFICULTY);
     },
 
     render : function() {

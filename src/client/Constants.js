@@ -3,11 +3,12 @@ var Constants = {
     HOME : 0,
     MYO_CHECK : 1,
     GAME_SETTINGS : 2,
-    GAME_PLAY : 3,
-    GAME_SUMMARY : 4,
-    SETTINGS : 5,
-    ACHIEVEMENTS : 6,
-    HELP : 7
+    CHOOSE_TRIVIA_DIFFICULTY: 3,
+    GAME_PLAY : 4,
+    GAME_SUMMARY : 5,
+    SETTINGS : 6,
+    ACHIEVEMENTS : 7,
+    HELP : 8
   }
 };
 

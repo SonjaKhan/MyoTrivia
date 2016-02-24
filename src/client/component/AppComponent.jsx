@@ -13,6 +13,7 @@ var HelpInfo = require('./HelpInfo.jsx');
 var AchievementsSummary = require('./AchievementsSummary.jsx');
 var Welcome = require('./Welcome.jsx');
 var GeneralSettings = require('./GeneralSettings.jsx');
+var TriviaDifficultyPicker = require('./TriviaDifficultyPicker.jsx');
 
 var PageManager = require('../PageManager');
 var GameManager = require('../GameManager');
@@ -104,6 +105,9 @@ var AppComponent = React.createClass({
                 break;
             case Constants.PAGES.SETTINGS:
                 content = <GeneralSettings />;
+                break;
+            case Constants.PAGES.CHOOSE_TRIVIA_DIFFICULTY:
+                content = <TriviaDifficultyPicker />;
                 break;
             default:
                 content = <div />;
