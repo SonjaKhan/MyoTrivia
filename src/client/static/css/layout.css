@@ -99,3 +99,7 @@ body {
   cursor: pointer;
   background: #C2C2C2;
 }
+
+.welcome_note {
+  text-align: center;
+}
