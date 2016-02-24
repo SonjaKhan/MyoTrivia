@@ -11,6 +11,7 @@ var GameSummary = require('./GameSummary.jsx');
 var HeaderComponent = require('./HeaderComponent.jsx');
 var HelpInfo = require('./HelpInfo.jsx');
 var AchievementsSummary = require('./AchievementsSummary.jsx');
+var Welcome = require('./Welcome.jsx');
 
 var PageManager = require('../PageManager')
 
@@ -106,7 +107,7 @@ var AppComponent = React.createClass({
         var content;
         switch(this.state.page) {
             case Constants.PAGES.HOME:
-                content = <MenuComponent handleStartGame={this.startGame} />;
+                content = <div><Welcome /><MenuComponent handleStartGame={this.startGame} /></div>;
                 break;
             case Constants.PAGES.GAME_SETTINGS:
                 content = <CategoryPicker />;
