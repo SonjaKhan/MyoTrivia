@@ -12,6 +12,7 @@ var HeaderComponent = require('./HeaderComponent.jsx');
 var HelpInfo = require('./HelpInfo.jsx');
 var AchievementsSummary = require('./AchievementsSummary.jsx');
 var Welcome = require('./Welcome.jsx');
+var GeneralSettings = require('./GeneralSettings.jsx');
 
 var PageManager = require('../PageManager')
 
@@ -126,6 +127,9 @@ var AppComponent = React.createClass({
                 break;
             case Constants.PAGES.ACHIEVEMENTS:
                 content = <AchievementsSummary />;
+                break;
+            case Constants.PAGES.SETTINGS:
+                content = <GeneralSettings />;
                 break;
             default:
                 content = <div />;
