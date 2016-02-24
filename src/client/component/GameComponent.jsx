@@ -25,7 +25,11 @@ var GameComponent = React.createClass({
     },
 
     listenForPose : function(val) {
-        if (val != null || this.state.currentIndex == this.state.questionList.length) {
+        // we don't want to listen for a new pose if we are showing the user 
+        // feedback about their answer, or it's the last question
+        if (
+            val != null || 
+            this.state.currentIndex == this.state.questionList.length - 1) {
             return;
         }
         var self = this;
