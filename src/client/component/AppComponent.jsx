@@ -79,28 +79,6 @@ var AppComponent = React.createClass({
         // Feel free to comment this out if it is causing issues
         // but this should use the questions in the json data file in the static/data folder
         var questionData = this.data["Sports"]["easy"];
-        // var questionData = [
-        //     {
-        //         questionText: "What color is the sky?",
-        //         answers: [
-        //                     { text: "Green", gesture: "fist" }, 
-        //                     { text: "Blue", gesture: "fingers_spread" }, 
-        //                     { text: "Purple", gesture: "wave_in" }, 
-        //                     { text: "Orange", gesture: "wave_out" },
-        //                 ],
-        //         correctIndex: 1
-        //     },
-        //     {
-        //         questionText: "What color is the ocean?",
-        //         answers: [
-        //                     { text: "Green", gesture: "fist" }, 
-        //                     { text: "Blue", gesture: "fingers_spread" }, 
-        //                     { text: "Purple", gesture: "wave_in" }, 
-        //                     { text: "Orange", gesture: "wave_out" },
-        //                 ],
-        //         correctIndex: 1
-        //     },
-        // ];
 
         // page manager subscribe callback
         PageManager.subscribe(this.updatePage)
@@ -114,7 +92,8 @@ var AppComponent = React.createClass({
                 content = <CategoryPicker />;
                 break;
             case Constants.PAGES.GAME_PLAY:
-                content = <GameComponent questions={questionData}/>;
+                // content = <GameComponent questions={questionData}/>;
+                content = <CategoryPicker />;
                 break;
             case Constants.PAGES.MYO_CHECK:
                 content = <CheckConnectionComponent startGame={this.startGame} />;

@@ -15,7 +15,7 @@ var CategoryPicker = React.createClass({
             <ul>
               <li>
                 <a href="#">
-                  Basic Biology
+                  Sports
                 </a>
               </li>
               <li>
