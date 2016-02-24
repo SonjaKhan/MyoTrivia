@@ -2,6 +2,8 @@ var React = require('react');
 var QuestionComponent = require('./QuestionComponent.jsx');
 var HeaderComponent = require('./HeaderComponent.jsx');
 var ResultsComponent = require('./ResultsComponent.jsx');
+var GameManager = require('../GameManager');
+
 
 var t;
 const STATUS_TIME = 3000;
@@ -9,7 +11,7 @@ const STATUS_TIME = 3000;
 var GameComponent = React.createClass({
     getInitialState : function() {
         return {
-            questionList: this.props.questions,
+            questionList: GameManager.getQuestionData(),
             currentIndex: 0,
             progressMap: {},
             value: null,  // user's answer index to current question

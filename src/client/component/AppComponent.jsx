@@ -14,14 +14,14 @@ var AchievementsSummary = require('./AchievementsSummary.jsx');
 var Welcome = require('./Welcome.jsx');
 var GeneralSettings = require('./GeneralSettings.jsx');
 
-var PageManager = require('../PageManager')
+var PageManager = require('../PageManager');
+var GameManager = require('../GameManager');
 
 var AppComponent = React.createClass({
     getInitialState : function() {
         return {
             myo: null,
-            page: Constants.PAGES.HOME,
-            data: null
+            page: Constants.PAGES.HOME
         };
     },
 
@@ -34,7 +34,7 @@ var AppComponent = React.createClass({
           async: false,
           dataType: 'json',
           success: function (response) {
-            self.data = response;
+            GameManager.setOverallData(response);
           }
         });
 
@@ -64,7 +64,7 @@ var AppComponent = React.createClass({
 
     startGame : function() {
         if (this.state.myo && this.state.myo.connected && this.state.myo.synced) {
-            PageManager.changePage(Constants.PAGES.GAME_PLAY);
+            PageManager.changePage(Constants.PAGES.GAME_SETTINGS);
         } else {
             PageManager.changePage(Constants.PAGES.MYO_CHECK);
         }
@@ -75,10 +75,6 @@ var AppComponent = React.createClass({
         });
     },
     render : function() {
-
-        // Feel free to comment this out if it is causing issues
-        // but this should use the questions in the json data file in the static/data folder
-        var questionData = this.data["Sports"]["easy"];
 
         // page manager subscribe callback
         PageManager.subscribe(this.updatePage)
@@ -92,8 +88,7 @@ var AppComponent = React.createClass({
                 content = <CategoryPicker />;
                 break;
             case Constants.PAGES.GAME_PLAY:
-                // content = <GameComponent questions={questionData}/>;
-                content = <CategoryPicker />;
+                content = <GameComponent/>;
                 break;
             case Constants.PAGES.MYO_CHECK:
                 content = <CheckConnectionComponent startGame={this.startGame} />;
