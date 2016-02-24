@@ -20,7 +20,7 @@ var CategoryPicker = React.createClass({
               Select a category
             </h3>
             {/* We'll want to do some sort of hierarchical selection later, but these for now */}
-            <ul>
+            <ul className="categories">
               <li className="Sports" onClick={this.navigate}>
                   Sports
               </li>

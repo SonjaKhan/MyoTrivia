@@ -103,3 +103,25 @@ body {
 .welcome_note {
   text-align: center;
 }
+
+.categories {
+  list-style: none;
+  padding-left: none;
+  text-align: center;
+}
+
+.categories li {
+  width: 500px;
+  height: 50px;
+  line-height: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #D2D2D2;
+}
+
+.categories li:hover {
+  cursor: pointer;
+  background: #C2C2C2;
+}
+
+

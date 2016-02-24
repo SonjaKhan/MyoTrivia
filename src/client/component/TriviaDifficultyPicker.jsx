@@ -20,7 +20,7 @@ var TriviaDifficultyPicker = React.createClass({
               Select a difficulty for trivia questions
             </h3>
             {/* We'll want to do some sort of hierarchical selection later, but these for now */}
-            <ul>
+            <ul className="categories">
               <li className="easy" onClick={this.navigate}>
                   Easy
               </li>
