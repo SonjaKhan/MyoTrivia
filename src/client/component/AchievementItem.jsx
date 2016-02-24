@@ -14,6 +14,7 @@ var AchievementItem = React.createClass({
         <div>
           { Achievements.getDescription(this.props.achievement_id) }
         </div>
+        <img src={'assets/achievements/' + Achievements.getIcon(this.props.achievement_id)} />
       </li>
     );
   }

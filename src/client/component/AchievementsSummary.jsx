@@ -12,7 +12,7 @@ var AchievementsSummary = React.createClass({
         <h2>
           Achievements
         </h2>
-        <ul>
+        <ul className="achievements_list">
           {
             User.achievements.map(function(idx) {
               return <AchievementItem achievement_id={idx} key={idx} />;
