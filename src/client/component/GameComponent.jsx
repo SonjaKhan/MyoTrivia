@@ -1,11 +1,10 @@
 var React = require('react');
 var QuestionComponent = require('./QuestionComponent.jsx');
 var HeaderComponent = require('./HeaderComponent.jsx');
-var ResultsComponent = require('./ResultsComponent.jsx');
+var GameSummary = require('./GameSummary.jsx');
 var GameManager = require('../GameManager');
 
 
-var t;
 const STATUS_TIME = 3000;
 
 var GameComponent = React.createClass({
@@ -13,7 +12,6 @@ var GameComponent = React.createClass({
         return {
             questionList: GameManager.getQuestionData(),
             currentIndex: 0,
-            progressMap: {},
             value: null,  // user's answer index to current question
         };
     },
@@ -56,11 +54,11 @@ var GameComponent = React.createClass({
         console.log("correct index", correctIndex);
         console.log("user index", userIndex);
         var self = this;
-        t = setTimeout(function() {
-            self.state.progressMap[self.state.currentIndex] = isSuccess;
+        setTimeout(function() {
+            self.state.questionList[self.state.currentIndex].userIndex = userIndex;
             self.setState({
                 currentIndex: self.state.currentIndex + 1,
-                progressMap: self.state.progressMap,
+                questionList: self.state.questionList,
                 value: null,
             });
         }, STATUS_TIME);
@@ -71,11 +69,9 @@ var GameComponent = React.createClass({
 
     render : function() {
         if (this.state.currentIndex == this.state.questionList.length) {
+            console.log(this.state.questionList);
             return (
-                <div>
-                    <div>GAME OVER</div>
-                    <ResultsComponent progressMap={this.state.progressMap} />
-                </div>
+                <GameSummary questionList={this.state.questionList} />
             );
         } else {
             return (

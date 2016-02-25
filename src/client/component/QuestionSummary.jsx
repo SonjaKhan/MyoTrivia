@@ -3,30 +3,47 @@ var QuestionSummaryItem = require('./QuestionSummaryItem.jsx');
 
 var QuestionSummary = React.createClass({
 
-  getInitialState : function() {
-    return {};
-  },
-  render : function() {
-    return (
-      <div id="question_summary">
-        <div id="question_summary_results">
-          You got 5/10 correct!
-        </div>
-        <ol id="question_summary_list">
-          {
-            [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(function(idx) {
-              return <QuestionSummaryItem item_num={idx} key={idx} />;
-            })
-          }
-        </ol>
-        <div id="question_summary_review">
-          <a href="#">
-            Review questions
-          </a>
-        </div>
-      </div>
-    );
-  }
+    getNumCorrect : function() {
+        count = 0;
+        for (var question in this.props.questionList) {
+            if (
+                this.props.questionList[question].correctIndex == 
+                this.props.questionList[question].userIndex
+            ) {
+                count += 1;
+            }
+        }
+        return count;
+    },
+
+    getQuestionSummaryList : function() {
+        result = []
+        for (var question in this.props.questionList) {
+            result.push(
+                <QuestionSummaryItem 
+                    key={question}
+                    index={question}
+                    question={this.props.questionList[question]}
+                />
+            );
+        }
+        return result;
+    },
+
+    render : function() {
+        var numCorrect = this.getNumCorrect();
+        var totalCount = this.props.questionList.length;
+        return (
+            <div id="question_summary">
+                <div id="question_summary_results">
+                    {"You got " +  numCorrect + "/" + totalCount + " correct!"}
+                </div>
+                <div id="question_summary_list">
+                    {this.getQuestionSummaryList()}
+                </div>  
+            </div>
+        );
+    }
 });
 
 module.exports = QuestionSummary;

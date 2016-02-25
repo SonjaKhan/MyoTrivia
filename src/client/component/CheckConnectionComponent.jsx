@@ -12,7 +12,7 @@ var CheckConnectionComponent = React.createClass({
 
     render : function() {
         return (
-            <div>
+            <div className="checkConnection">
                 Please connect and sync your Myo
             </div>
         );

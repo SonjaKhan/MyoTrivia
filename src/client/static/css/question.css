@@ -1,6 +1,12 @@
+.checkConnection {
+  display: table;
+  margin: 30px auto;
+}
+
 .question_page {
 	height: 450px;
 }
+
 .question {
   margin-top: 30px;
   margin-bottom: 20px;

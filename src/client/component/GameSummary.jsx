@@ -1,16 +1,15 @@
 var React = require('react');
 var QuestionSummary = require('./QuestionSummary.jsx');
 
-
 var GameSummary = React.createClass({
-  getInitialState : function() {
-    return {};
-  },
   render : function() {
-    return (
-      <QuestionSummary />
-    );
-  }
+	    return (
+	    	<div>
+	    		<div>Game Over</div>
+	      		<QuestionSummary questionList={this.props.questionList} />
+	      	</div>
+	    );
+  	}
 });
 
 module.exports = GameSummary;

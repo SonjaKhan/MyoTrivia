@@ -17,7 +17,7 @@ var GameManager = {
 
   getQuestionData: function() {
     return this.currentData;
-  }
+  },
 };
 
 module.exports = GameManager;

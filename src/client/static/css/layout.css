@@ -2,16 +2,14 @@ body {
   margin: 0px;
   padding: 0px;
   text-align: center;
-  background: #E2E2E2;
   font-family: sans-serif;
 }
 
 #content {
   width: 600px;
   padding: 25px;
-  margin: 50px auto;
+  margin: 20px auto;
   text-align: left;
-  background: #F2F2F2;
 }
 
 .game_title {
