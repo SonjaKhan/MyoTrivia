@@ -70,11 +70,13 @@ var AppComponent = React.createClass({
             PageManager.changePage(Constants.PAGES.MYO_CHECK);
         }
     },
+
     updatePage: function(new_page) {
         this.setState({
             page: new_page
         });
     },
+    
     render : function() {
 
         // page manager subscribe callback

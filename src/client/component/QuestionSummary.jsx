@@ -36,7 +36,8 @@ var QuestionSummary = React.createClass({
         return (
             <div id="question_summary">
                 <div id="question_summary_results">
-                    {"You got " +  numCorrect + "/" + totalCount + " correct!"}
+                    <p>{"You got " +  numCorrect + "/" + totalCount + " correct!"}</p>
+                    <p>Click on each question to see details</p>
                 </div>
                 <div id="question_summary_list">
                     {this.getQuestionSummaryList()}
