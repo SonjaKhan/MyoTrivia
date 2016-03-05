@@ -4,6 +4,7 @@ var $ = require('jquery');
 
 var Constants = require('../Constants');
 var GameComponent = require('./GameComponent.jsx');
+var GameMultiComponent = require('./GameMultiComponent.jsx');
 var MenuComponent = require('./MenuComponent.jsx');
 var CategoryPicker = require('./CategoryPicker.jsx');
 var CheckConnectionComponent = require('./CheckConnectionComponent.jsx');
@@ -18,6 +19,7 @@ var TriviaDifficultyPicker = require('./TriviaDifficultyPicker.jsx');
 var PageManager = require('../PageManager');
 var GameManager = require('../GameManager');
 
+const MULTIANSWER = false; // set to true, to play with multiple-gesture answer choices enabled
 var AppComponent = React.createClass({
     getInitialState : function() {
         return {
@@ -30,8 +32,12 @@ var AppComponent = React.createClass({
         var self = this;
 
         // load json
+        var dataUrl = 'data/data.json';
+        if (MULTIANSWER) {
+           dataUrl = 'data/multi_gesture_data.json';
+        }
         $.ajax({
-          url: 'data/data.json',
+          url: dataUrl,
           async: false,
           dataType: 'json',
           success: function (response) {
@@ -91,7 +97,11 @@ var AppComponent = React.createClass({
                 content = <CategoryPicker />;
                 break;
             case Constants.PAGES.GAME_PLAY:
-                content = <GameComponent/>;
+                if (MULTIANSWER) {
+                    content = <GameMultiComponent />;
+                } else {
+                    content = <GameComponent />;
+                }
                 break;
             case Constants.PAGES.MYO_CHECK:
                 content = <CheckConnectionComponent startGame={this.startGame} />;

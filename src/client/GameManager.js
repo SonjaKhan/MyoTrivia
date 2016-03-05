@@ -2,6 +2,7 @@ var Constants = require('./Constants');
 var GameManager = {
   entireData : {},
   currentData: {},
+  answerProgress: [[],[],[],[]],
 
   setOverallData : function(data) {
     this.entireData = data;
@@ -18,6 +19,14 @@ var GameManager = {
   getQuestionData: function() {
     return this.currentData;
   },
+
+  clearAnswerProgress: function(index) {
+    this.answerProgress[index] = []
+  },
+
+  resetAnswerProgress: function() {
+    this.answerProgress = [[],[],[],[]]
+  }
 };
 
 module.exports = GameManager;
