@@ -9,6 +9,11 @@ var Constants = {
     SETTINGS : 6,
     ACHIEVEMENTS : 7,
     HELP : 8
+  },
+
+  INTERACTION_METHOD : {
+    DEFAULT : 0,
+    MULTI : 1
   }
 };
 

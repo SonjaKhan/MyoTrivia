@@ -18,8 +18,8 @@ var TriviaDifficultyPicker = require('./TriviaDifficultyPicker.jsx');
 
 var PageManager = require('../PageManager');
 var GameManager = require('../GameManager');
+var InteractionManager = require('../InteractionManager');
 
-const MULTIANSWER = false; // set to true, to play with multiple-gesture answer choices enabled
 var AppComponent = React.createClass({
     getInitialState : function() {
         return {
@@ -28,14 +28,8 @@ var AppComponent = React.createClass({
         };
     },
 
-    componentWillMount : function() {
-        var self = this;
-
-        // load json
-        var dataUrl = 'data/data.json';
-        if (MULTIANSWER) {
-           dataUrl = 'data/multi_gesture_data.json';
-        }
+    loadData : function() {
+        var dataUrl = InteractionManager.getDataUrl();
         $.ajax({
           url: dataUrl,
           async: false,
@@ -44,6 +38,12 @@ var AppComponent = React.createClass({
             GameManager.setOverallData(response);
           }
         });
+    },
+
+    componentWillMount : function() {
+        var self = this;
+
+        this.loadData();
 
         Myo.onError = function() {
             console.log("Myo Connect is not running");
@@ -82,6 +82,12 @@ var AppComponent = React.createClass({
             page: new_page
         });
     },
+
+    updateInteractionMethod: function(interaction) {
+        InteractionManager.setInteractionMethod(interaction);
+        this.loadData();
+        this.update();
+    },
     
     render : function() {
 
@@ -97,11 +103,7 @@ var AppComponent = React.createClass({
                 content = <CategoryPicker />;
                 break;
             case Constants.PAGES.GAME_PLAY:
-                if (MULTIANSWER) {
-                    content = <GameMultiComponent />;
-                } else {
-                    content = <GameComponent />;
-                }
+                content = InteractionManager.getGameComponent();
                 break;
             case Constants.PAGES.MYO_CHECK:
                 content = <CheckConnectionComponent startGame={this.startGame} />;
@@ -116,7 +118,7 @@ var AppComponent = React.createClass({
                 content = <AchievementsSummary />;
                 break;
             case Constants.PAGES.SETTINGS:
-                content = <GeneralSettings />;
+                content = <GeneralSettings updateInteractionMethod={this.updateInteractionMethod} />;
                 break;
             case Constants.PAGES.CHOOSE_TRIVIA_DIFFICULTY:
                 content = <TriviaDifficultyPicker />;

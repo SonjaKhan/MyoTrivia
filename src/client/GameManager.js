@@ -26,7 +26,7 @@ var GameManager = {
 
   resetAnswerProgress: function() {
     this.answerProgress = [[],[],[],[]]
-  }
+  },
 };
 
 module.exports = GameManager;

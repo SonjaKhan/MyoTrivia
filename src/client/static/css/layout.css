@@ -122,4 +122,27 @@ body {
   background: #C2C2C2;
 }
 
+.interactions {
+  list-style: none;
+  padding-left: none;
+  text-align: center;
+}
+
+.interactions li {
+  width: 500px;
+  height: 50px;
+  line-height: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #D2D2D2;
+}
+
+.interactions li.active {
+  background-color: #A2A2D2;
+}
+
+.interactions li:hover {
+  cursor: pointer;
+}
+
 
