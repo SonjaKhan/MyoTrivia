@@ -18,6 +18,7 @@ var QuestionComponent = React.createClass({
                         ease={this.props.value != i && this.props.question.correctIndex == i}
                         correct={this.props.value != null && this.props.question.correctIndex == i}
                         incorrect={this.props.value == i && this.props.question.correctIndex != i}
+                        selected={this.props.selected != null && this.props.selected == i && this.props.value == null}
                     />
                 </li>
             );

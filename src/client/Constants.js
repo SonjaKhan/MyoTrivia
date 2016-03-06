@@ -13,7 +13,8 @@ var Constants = {
 
   INTERACTION_METHOD : {
     DEFAULT : 0,
-    MULTI : 1
+    MULTI : 1,
+    CONFIRM : 2,
   }
 };
 

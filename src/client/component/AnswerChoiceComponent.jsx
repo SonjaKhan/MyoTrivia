@@ -32,6 +32,9 @@ var AnswerChoiceComponent = React.createClass({
         if (this.props.ease) {
             gestureClass += " ease";
         }
+        if (this.props.selected) {
+            gestureClass += " selected";
+        }
         return (
             <div className="answerChoice">
                 <div className="answer_text">

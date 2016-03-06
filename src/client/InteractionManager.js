@@ -2,10 +2,11 @@ var React = require('react');
 var Constants = require('./Constants');
 
 var GameComponent = require('./component/GameComponent.jsx');
+var GameConfirmationComponent = require('./component/GameConfirmationComponent.jsx');
 var GameMultiComponent = require('./component/GameMultiComponent.jsx');
 
 var InteractionManager = {
-  interactionMethod: Constants.INTERACTION_METHOD.MULTI,
+  interactionMethod: Constants.INTERACTION_METHOD.DEFAULT,
 
   getDataUrl: function() {
     switch(this.interactionMethod) {
@@ -28,6 +29,8 @@ var InteractionManager = {
     switch(this.interactionMethod) {
       case Constants.INTERACTION_METHOD.MULTI:
         return <GameMultiComponent />;
+      case Constants.INTERACTION_METHOD.CONFIRM:
+        return <GameConfirmationComponent />;
       default:
         return <GameComponent />;
     }
