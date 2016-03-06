@@ -17,6 +17,12 @@ navRoutes[Constants.PAGES.GAME_SETTINGS] = [
 											[Constants.PAGES.HELP, "Help"]
 										   ];
 
+navRoutes[Constants.PAGES.CHOOSE_TRIVIA_DIFFICULTY] = [
+											[Constants.PAGES.HOME, "Home"],
+											[Constants.PAGES.GAME_SETTINGS, "Choose Category"],
+											[Constants.PAGES.HELP, "Help"],
+										   ];
+
 navRoutes[Constants.PAGES.GAME_SUMMARY] = [ 
 											[Constants.PAGES.HOME, "Home"],
 											[Constants.PAGES.GAME_SETTINGS, "Game Settings"],
