@@ -52,6 +52,7 @@ var AppComponent = React.createClass({
         Myo.on('connected', function() {
             console.log('connected', this);
             Myo.setLockingPolicy('none');
+            Myo.off('unlock');
             self.setState({
                 myo: this,
             });

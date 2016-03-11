@@ -15,6 +15,7 @@ var Constants = {
     DEFAULT : 0,
     MULTI : 1,
     CONFIRM : 2,
+    CLICK_FIRST: 3
   }
 };
 

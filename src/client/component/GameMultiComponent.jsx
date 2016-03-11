@@ -105,6 +105,10 @@ var GameMultiComponent = React.createClass({
         }
     },
 
+    handleClick : function(answer) {
+        console.log(answer);
+    },
+
     handleAnswer : function(userIndex) {
         correctIndex = this.state.questionList[this.state.currentIndex].correctIndex;
         isSuccess = correctIndex == userIndex;

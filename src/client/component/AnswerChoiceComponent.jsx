@@ -40,7 +40,7 @@ var AnswerChoiceComponent = React.createClass({
                 <div className="answer_text">
                     {this.props.answer}
                 </div>
-                <div className={gestureClass} onClick={this.toggleGif}>
+                <div className={gestureClass} >
                     <img 
                         src={"assets/gesture_icons/png/" + poseImgMap[this.props.gesture]}
                         alt={this.props.gesture}

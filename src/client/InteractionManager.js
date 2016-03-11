@@ -4,6 +4,7 @@ var Constants = require('./Constants');
 var GameComponent = require('./component/GameComponent.jsx');
 var GameConfirmationComponent = require('./component/GameConfirmationComponent.jsx');
 var GameMultiComponent = require('./component/GameMultiComponent.jsx');
+var GameClickFirstComponent = require('./component/GameClickFirstComponent.jsx');
 
 var InteractionManager = {
   interactionMethod: Constants.INTERACTION_METHOD.DEFAULT,
@@ -31,6 +32,8 @@ var InteractionManager = {
         return <GameMultiComponent />;
       case Constants.INTERACTION_METHOD.CONFIRM:
         return <GameConfirmationComponent />;
+      case Constants.INTERACTION_METHOD.CLICK_FIRST:
+        return <GameClickFirstComponent />;
       default:
         return <GameComponent />;
     }

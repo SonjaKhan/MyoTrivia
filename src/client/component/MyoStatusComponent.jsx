@@ -24,6 +24,7 @@ var MyoStatusComponent = React.createClass({
 				synced: false,
 			});
 		});
+
 	},
 
 	componentWillReceiveProps(nextProps) {
