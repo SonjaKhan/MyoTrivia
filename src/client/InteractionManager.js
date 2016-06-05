@@ -12,7 +12,7 @@ var InteractionManager = {
   getDataUrl: function() {
     switch(this.interactionMethod) {
       case Constants.INTERACTION_METHOD.MULTI:
-        return 'data/multi_gesture_data.json';
+        return 'data/SampleTriviaQuestionsMulti.json';
       default:
         return 'data/SampleTriviaQuestions.json';
     }
