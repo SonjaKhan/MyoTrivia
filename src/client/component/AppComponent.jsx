@@ -30,6 +30,7 @@ var AppComponent = React.createClass({
 
     loadData : function() {
         var dataUrl = InteractionManager.getDataUrl();
+        console.log("about to load " + dataUrl);
         $.ajax({
           url: dataUrl,
           async: false,
@@ -51,8 +52,9 @@ var AppComponent = React.createClass({
 
         Myo.on('connected', function() {
             console.log('connected', this);
+            Myo.off('lock');
+            this.unlock();
             Myo.setLockingPolicy('none');
-            Myo.off('unlock');
             self.setState({
                 myo: this,
             });

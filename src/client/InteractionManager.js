@@ -14,7 +14,7 @@ var InteractionManager = {
       case Constants.INTERACTION_METHOD.MULTI:
         return 'data/multi_gesture_data.json';
       default:
-        return 'data/data.json';
+        return 'data/SampleTriviaQuestions.json';
     }
   },
 

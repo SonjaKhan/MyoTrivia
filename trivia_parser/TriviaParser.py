@@ -26,7 +26,7 @@ def format_question(row):
 	gestures, and the index of the correct answer
 	'''
 	output = {}
-	output['question_text'] = row['question']
+	output['questionText'] = row['question']
 	answers = [row['Wrong answer1'], row['Wrong answer2'], row['Wrong answer3'], row['CORRECT']]
 	answers = random.sample(answers, len(answers))
 	output['answers'] = [ { 'text': answers[i], 'gesture': gestures[i]} for i in range(len(answers)) ]

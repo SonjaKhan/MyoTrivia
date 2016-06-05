@@ -5,12 +5,26 @@ var GameManager = require('../GameManager');
 
 var CategoryPicker = React.createClass({
     getInitialState : function() {
-        return {};
+        return {
+            categoryList: GameManager.getCategories(),
+        };
     },
 
     navigate: function(e) {
-      GameManager.setCategory(e.target.className);
+      GameManager.setCategory(e.target.className.replace(/_/g, " "));
       PageManager.changePage(Constants.PAGES.CHOOSE_TRIVIA_DIFFICULTY);
+    },
+
+    getCategories: function() {
+      categories = []
+      for (var i = 0; i < this.state.categoryList.length; i++) {
+        categories.push(
+          <li className={this.state.categoryList[i].replace(/ /g, "_")} onClick={this.navigate} key={i}>
+            {this.state.categoryList[i]}
+          </li>
+        );
+      }
+      return categories;
     },
 
     render : function() {
@@ -21,18 +35,7 @@ var CategoryPicker = React.createClass({
             </h3>
             {/* We'll want to do some sort of hierarchical selection later, but these for now */}
             <ul className="categories">
-              <li className="Sports" onClick={this.navigate}>
-                  Sports
-              </li>
-              <li className="Sports" onClick={this.navigate}>
-                  History: 1930s
-              </li>
-              <li className="Sports" onClick={this.navigate}>
-                  Popstars of the 80s
-              </li>
-              <li className="Sports" onClick={this.navigate}>
-                  European Countries
-              </li>
+              {this.getCategories()}
             </ul>
           </div>
         );

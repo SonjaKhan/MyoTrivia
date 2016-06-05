@@ -8,8 +8,16 @@ var GameManager = {
     this.entireData = data;
   },
 
+  getCategories: function() {
+    return Object.keys(this.entireData);
+  },
+
   setCategory: function(category) {
     this.currentData = this.entireData[category];
+  },
+
+  getTriviaDifficulties: function() {
+    return Object.keys(this.currentData)
   },
 
   setTriviaDifficulty: function(triviaDifficulty) {
