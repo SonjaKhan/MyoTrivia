@@ -12,7 +12,7 @@ def process_csv(path, multi=False):
     output = {}
     for row in csv.DictReader(open(path)):
     	category = row['zone_name']
-    	difficulty = difficulties[int(row['difficulty']) - 1]
+    	difficulty = difficulties[int(row['diffrank']) - 1]
     	if category not in output:
     		output[category] = {}
     	if difficulty not in output[category]:
@@ -28,13 +28,13 @@ def format_question(row, multi=False):
 	'''
 	output = {}
 	output['questionText'] = row['question']
-	answers = [row['Wrong answer1'], row['Wrong answer2'], row['Wrong answer3'], row['CORRECT']]
+	answers = [row['answer1'], row['answer2'], row['answer3'], row['right']]
 	answers = random.sample(answers, len(answers))
 	if (multi):
 		output['answers'] = [ { 'text': answers[i], 'gesture': multi_gestures[i]} for i in range(len(answers)) ]
 	else:
 		output['answers'] = [ { 'text': answers[i], 'gesture': gestures[i]} for i in range(len(answers)) ]
-	output['correctIndex'] = answers.index(row['CORRECT'])
+	output['correctIndex'] = answers.index(row['right'])
 	return output
 
 def usage():
