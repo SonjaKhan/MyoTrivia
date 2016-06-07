@@ -12,9 +12,9 @@ var InteractionManager = {
   getDataUrl: function() {
     switch(this.interactionMethod) {
       case Constants.INTERACTION_METHOD.MULTI:
-        return 'data/SampleTriviaQuestionsMulti.json';
+        return 'data/TriviaQuestionsMulti.json';
       default:
-        return 'data/SampleTriviaQuestions.json';
+        return 'data/TriviaQuestions.json';
     }
   },
 

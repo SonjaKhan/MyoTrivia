@@ -25,7 +25,19 @@ var GameManager = {
   },
 
   getQuestionData: function() {
-    return this.currentData;
+    var bucket = [];
+
+    for (var i=0;i<this.currentData.length;i++) {
+        bucket.push(i);
+    }
+
+    var questionData = [];
+    for (var i=0; i < 5; i++)
+    {
+       var randomIndex = Math.floor(Math.random()*bucket.length);
+       questionData.push(this.currentData[bucket.splice(randomIndex, 1)[0]]);
+    }
+    return questionData;
   },
 
   clearAnswerProgress: function(index) {
